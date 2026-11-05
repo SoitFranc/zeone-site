@@ -3,13 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Zeone</title>
+<title>Zeone — studio de créations numériques</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Zeone, studio de créations numériques de François Beuvin : applications mobiles, sites et plateformes, outils d'IA.">
+<meta name="description" content="Zeone, studio de créations numériques de François Beuvin : applications mobiles, sites et plateformes web, outils d'IA sur mesure. Demandez un devis.">
 <meta property="og:title" content="Zeone — studio de créations numériques">
 <meta property="og:description" content="Applications, sites et outils d'IA : des mondes numériques conçus avec goût, faits pour vivre seuls.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://zeone.net/">
+<meta property="og:image" content="https://zeone.net/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="Zeone">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zeone.net/og.jpg">
+<link rel="canonical" href="https://zeone.net/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Zeone","url":"https://zeone.net/","email":"zeonevolution@proton.me","image":"https://zeone.net/og.jpg","description":"Studio de créations numériques : applications mobiles, sites et plateformes web, outils d'intelligence artificielle sur mesure.","founder":{"@type":"Person","name":"François Beuvin","jobTitle":"Ingénieur informatique, IA et robotique"},"areaServed":"FR","knowsLanguage":["fr","en"],"serviceType":["Développement d'applications mobiles","Création de sites et plateformes web","Intelligence artificielle et automatisation"]}</script>
 <meta name="theme-color" content="#04050B">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%238FB2FF'/%3E%3Cstop offset='.5' stop-color='%23B79BFF'/%3E%3Cstop offset='1' stop-color='%23E58BFF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' fill='%2304050B'/%3E%3Cpath d='M16 3 L25 16 L16 29 L7 16 Z' fill='none' stroke='url(%23g)' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23F4F1E9'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,14 +196,68 @@ footer em{font-family:var(--display);font-size:20px}
 footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint)}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important}.anim .rv{opacity:1;transform:none;filter:none;transition:none}.w{opacity:1;filter:none;transition:none}#loader{display:none}}
+/* v5: seamless sections, smooth scroll, tools, method, brief */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+.hero canvas{-webkit-mask-image:linear-gradient(#000 74%,transparent 100%);mask-image:linear-gradient(#000 74%,transparent 100%)}
+.signal .stage canvas{-webkit-mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent 100%)}
+.signal{margin-top:-18vh}
+.orbit{margin-top:-10vh}
+.tool{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;background:none;border:0;color:var(--mute);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:color .3s;text-shadow:0 0 12px #04050B}
+.tool:hover,.tool.on{color:var(--ink)}
+.bars{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
+.bars i{display:block;width:2px;height:3px;border-radius:2px;background:currentColor;transition:height .3s}
+.tool.on .bars i{animation:zbar 1.1s ease-in-out infinite;background:var(--violet)}
+.tool.on .bars i:nth-child(2){animation-delay:-.3s}.tool.on .bars i:nth-child(3){animation-delay:-.6s}.tool.on .bars i:nth-child(4){animation-delay:-.85s}
+@keyframes zbar{0%,100%{height:3px}50%{height:12px}}
+@media (max-width:760px){.tool .tl{display:none}.tool{padding:0 8px}}
+/* method */
+.path{position:relative}
+.pathline{position:absolute;left:0;right:0;top:0;width:100%;height:120px;overflow:visible;pointer-events:none}
+.pathline path{fill:none;stroke-linecap:round}
+.pathline .ghost{stroke:rgba(183,155,255,.12);stroke-width:1}
+.pathline .draw{stroke:url(#pg);stroke-width:1.6;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 6px rgba(183,155,255,.7))}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.step{position:relative;display:flex;flex-direction:column;gap:12px;padding-top:120px}
+.step .node{position:absolute;top:calc(60px - 11px);left:50%;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#B79BFF 40%,#5A46C8 75%);box-shadow:0 0 22px 4px rgba(183,155,255,.5)}
+.step:nth-child(1) .node{top:calc(60px - 11px - 18px)}.step:nth-child(2) .node{top:calc(60px - 11px + 14px)}.step:nth-child(3) .node{top:calc(60px - 11px - 14px)}.step:nth-child(4) .node{top:calc(60px - 11px + 16px)}
+.step .n{font-family:var(--display);font-style:italic;font-size:44px;line-height:1;background:var(--iri);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:zflow 9s linear infinite}
+.step h3{margin:0;font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1}
+.step p{margin:0;font-size:16px;line-height:1.6;color:var(--mute)}
+@media (max-width:860px){
+  .pathline{display:none}
+  .steps{grid-template-columns:1fr;gap:34px;padding-left:34px}
+  .steps::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:1px;background:linear-gradient(#8FB2FF,#B79BFF,#E58BFF,#FFC99A);opacity:.5}
+  .step{padding-top:0}
+  .step .node,.step:nth-child(n) .node{top:6px;left:-34px;margin-left:0;width:18px;height:18px}
+}
+/* brief form */
+.brief{width:100%;max-width:720px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;text-align:left}
+.brief .row{display:flex;flex-direction:column;gap:8px;min-width:0}
+.brief .full{grid-column:1 / -1}
+.brief label{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute)}
+.brief input,.brief select,.brief textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:rgba(10,10,30,.55);border:0;border-radius:18px;padding:14px 18px;box-shadow:inset 0 0 0 1px rgba(183,155,255,.18);transition:box-shadow .3s,background .3s;-webkit-appearance:none;appearance:none}
+.brief select{background-image:linear-gradient(45deg,transparent 50%,var(--mute) 50%),linear-gradient(135deg,var(--mute) 50%,transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
+.brief select option{background:#0B0B22;color:var(--ink)}
+.brief textarea{resize:vertical;min-height:130px;line-height:1.55}
+.brief input:focus,.brief select:focus,.brief textarea:focus{outline:none;background:rgba(20,16,50,.7);box-shadow:inset 0 0 0 1px rgba(183,155,255,.6),0 0 28px rgba(140,120,255,.25)}
+.brief .err{box-shadow:inset 0 0 0 1px rgba(255,140,190,.7)}
+.brief .actions{flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px 22px;justify-content:center;padding-top:6px}
+.formnote{margin:0;flex:1 1 260px;font-size:14px;line-height:1.5;color:var(--mute)}
+.formnote:empty{display:none}
+.mail .or{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
+.mail .addr{font-size:clamp(24px,3.2vw,38px)}
+@media (max-width:620px){.brief{grid-template-columns:1fr}}
+.signal .stage{pointer-events:none}
 </style>
 </head>
 <body>
 
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div class="hud">
-    <div class="corner bl" aria-hidden="true"><span>// © 2026 Zeone</span><span id="sig">Signal 98.42%</span></div>
-  <div class="corner br"><span class="sect" id="sect" aria-hidden="true">Secteur 01 / 06</span><button class="next link" id="nextBtn" type="button" aria-label="Section suivante">Suivant <span aria-hidden="true">▸▸</span></button></div>
+  <div class="corner bl" aria-hidden="true"><span>// © 2026 Zeone</span><span id="sig">Signal 98.42%</span></div>
+  <div class="corner br"><span class="sect" id="sect" aria-hidden="true">Secteur 01 / 07</span><button class="next link" id="nextBtn" type="button" aria-label="Section suivante" data-i18n-aria="aNext"><span data-i18n="next">Suivant</span> <span aria-hidden="true">▸▸</span></button></div>
 </div>
 
 <header class="top">
@@ -202,10 +266,13 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
     <span>ZEONE</span>
   </a>
   <nav class="menu" aria-label="Navigation principale">
-    <a href="#projets" data-sec="projets" data-hover-scramble>Projets</a>
-    <a href="#services" data-sec="services" data-hover-scramble>Services</a>
-    <a href="#qui" data-sec="qui" data-hover-scramble>Qui</a>
-    <a class="link cta" href="#contact">Démarrer un projet</a>
+    <a href="#projets" data-sec="projets" data-hover-scramble data-i18n="nProj">Projets</a>
+    <a href="#services" data-sec="services" data-hover-scramble data-i18n="nServ">Services</a>
+    <a href="#methode" data-sec="methode" data-hover-scramble data-i18n="nMeth">Méthode</a>
+    <a href="#qui" data-sec="qui" data-hover-scramble data-i18n="nWho">Qui</a>
+    <button class="tool" type="button" id="soundBtn" aria-pressed="false" aria-label="Activer le son d'ambiance" data-i18n-aria="aSound"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="tl" data-i18n="sound">Son</span></button>
+    <button class="tool" type="button" id="langBtn" aria-label="Switch to English" data-i18n-aria="aLang"><span data-i18n="langOther">EN</span></button>
+    <a class="link cta" href="#contact" data-i18n="cta">Demander un devis</a>
   </nav>
 </header>
 
@@ -216,14 +283,14 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
   <div class="readout ro1" aria-hidden="true"><b>OBJ_00 · Étoile-cristal</b><span id="roA">ROT 000.0°</span><br><span id="roB">Énergie 0.000</span><br><span>Facettes 60 · noyau 8</span></div>
   <div class="heroCopy gut">
     <div class="inner">
-      <p class="label" data-scramble>Studio de créations numériques</p>
+      <p class="label" data-scramble data-i18n="hLabel">Studio de créations numériques</p>
       <h1 id="title">Zeone</h1>
-      <p class="lead">Des applications, des sites et des outils d'IA. Des mondes numériques conçus avec goût, <em class="ziri">faits pour vivre seuls.</em></p>
+      <p class="lead" data-i18n="hLead">J'imagine et je développe des applications, des sites et des outils d'IA sur mesure. Des mondes numériques conçus avec goût, <em class="ziri">faits pour vivre seuls.</em></p>
       <div class="ctas">
-        <a class="btn" href="#projets">Explorer l'univers <span aria-hidden="true">→</span></a>
-        <a class="link" href="#contact">Parler d'un projet</a>
+        <a class="btn" href="#contact"><span data-i18n="hCta">Demander un devis</span> <span aria-hidden="true">→</span></a>
+        <a class="link" href="#projets" data-i18n="hExplore">Explorer l'univers</a>
       </div>
-      <p class="hint" aria-hidden="true">// Approchez ou touchez le cristal</p>
+      <p class="hint" aria-hidden="true" data-i18n="hHint">// Approchez ou touchez le cristal</p>
     </div>
   </div>
 </section>
@@ -233,12 +300,12 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
     <canvas id="cv" aria-hidden="true"></canvas>
     <div class="stagetext gut">
       <div class="sigTop" id="sigTop">
-        <p class="label" data-scramble>Le signal</p>
+        <p class="label" data-scramble data-i18n="sLabel">Le signal</p>
         <h2 id="sentence"></h2>
       </div>
       <div class="sigBot" id="sigBot">
-        <p class="big ziri">Puis tout s'ouvre.</p>
-        <p class="label">Un studio · une constellation de mondes</p>
+        <p class="big ziri" data-i18n="sBig">Puis tout s'ouvre.</p>
+        <p class="label" data-i18n="sSub">Un studio · une constellation de mondes</p>
       </div>
     </div>
   </div>
@@ -247,24 +314,24 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 <section class="orbit" id="projets" aria-label="Projets">
   <div class="stage">
     <div class="head gut"><div class="wrap">
-      <p class="label" data-scramble>Travaux choisis</p>
-      <h2 class="h2">Les <em class="ziri">mondes.</em></h2>
+      <p class="label" data-scramble data-i18n="pLabel">Travaux choisis</p>
+      <h2 class="h2" data-i18n="pTitle">Les <em class="ziri">mondes.</em></h2>
     </div></div>
     <div class="ring3d" aria-hidden="true"></div>
     <div id="shards"></div>
     <div class="callouts" aria-live="polite">
       <svg aria-hidden="true"><g id="leaders" fill="none" stroke="rgba(200,190,255,.38)" stroke-width="1"></g></svg>
       <div class="co coA" id="coA"><span id="coId">PROJET_01</span><span class="nm" id="coName">Innernet</span></div>
-      <div class="co coB" id="coB" aria-hidden="true"><span>Statut</span><b id="coStatus">En développement</b><span>Type</span><b id="coKind">Plateforme web</b></div>
-      <div class="co coC" id="coC" aria-hidden="true"><span>Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 05</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
+      <div class="co coB" id="coB" aria-hidden="true"><span data-i18n="pStatus">Statut</span><b id="coStatus">En développement</b><span data-i18n="pType">Type</span><b id="coKind">Plateforme web</b></div>
+      <div class="co coC" id="coC" aria-hidden="true"><span data-i18n="pAlgo">Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 05</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
     </div>
     <div class="foot gut">
       <p class="desc" id="coDesc">Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.</p>
       <a class="link visit" id="coLink" href="https://innernet.work" target="_blank" rel="noopener">Visiter innernet.work ↗</a>
       <div class="pager">
-        <button type="button" id="prevP" aria-label="Projet précédent">‹</button>
+        <button type="button" id="prevP" aria-label="Projet précédent" data-i18n-aria="aPrev">‹</button>
         <span class="now" id="pagerNow">01 · Innernet</span>
-        <button type="button" id="nextP" aria-label="Projet suivant">›</button>
+        <button type="button" id="nextP" aria-label="Projet suivant" data-i18n-aria="aNextP">›</button>
       </div>
     </div>
   </div>
@@ -273,8 +340,8 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 <section class="block gut" aria-label="En gestation">
   <div class="wrap">
     <div class="headrow rv">
-      <div class="stack"><p class="label" data-scramble>En gestation</p><h2 class="h2">Mondes à <em class="ziri">venir.</em></h2></div>
-      <p class="aside">Des domaines réservés pour les prochains projets de l'univers Zeone.</p>
+      <div class="stack"><p class="label" data-scramble data-i18n="gLabel">En gestation</p><h2 class="h2" data-i18n="gTitle">Mondes à <em class="ziri">venir.</em></h2></div>
+      <p class="aside" data-i18n="gAside">Des domaines réservés pour les prochains projets de l'univers Zeone.</p>
     </div>
     <div class="seeds rv">
       <div class="seed"><span class="mini" style="--c:conic-gradient(#B79BFF,#6F8BFF,#A9C4FF,#B79BFF)" aria-hidden="true"></span><span><b>Collisyo</b><small>collisyo.com</small></span></div>
@@ -287,12 +354,34 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 <section class="block gut" id="services" aria-label="Services">
   <div class="wrap">
     <div class="headrow rv">
-      <div class="stack"><p class="label" data-scramble>Ce que je crée</p><h2 class="h2">Trois arts, <em class="ziri">un même soin.</em></h2></div>
+      <div class="stack"><p class="label" data-scramble data-i18n="vLabel">Ce que je crée</p><h2 class="h2" data-i18n="vTitle">Trois arts, <em class="ziri">un même soin.</em></h2></div>
     </div>
     <div class="cards">
-      <div class="rv"><div class="card cut" data-card><span class="topline zirib" aria-hidden="true"></span><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_01 · MOBILE</span><h3>Applications mobiles</h3><p>iOS et Android depuis une seule base de code, avec données temps réel.</p></div></div>
-      <div class="rv" style="transition-delay:.15s"><div class="card cut" data-card><span class="topline zirib" aria-hidden="true"></span><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_02 · WEB</span><h3>Sites &amp; plateformes</h3><p>Des sites vitrines aux plateformes complètes, pensés pour marquer les esprits.</p></div></div>
-      <div class="rv" style="transition-delay:.3s"><div class="card cut" data-card><span class="topline zirib" aria-hidden="true"></span><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_03 · IA</span><h3>IA &amp; automatisation</h3><p>L’intelligence artificielle là où elle crée vraiment de la valeur.</p></div></div>
+      <div class="rv"><div class="card" data-card><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_01 · MOBILE</span><h3 data-i18n="c1t">Applications mobiles</h3><p data-i18n="c1d">iOS et Android depuis une seule base de code, avec données temps réel.</p></div></div>
+      <div class="rv" style="transition-delay:.15s"><div class="card" data-card><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_02 · WEB</span><h3 data-i18n="c2t">Sites &amp; plateformes</h3><p data-i18n="c2d">Des sites vitrines aux plateformes complètes, pensés pour marquer les esprits.</p></div></div>
+      <div class="rv" style="transition-delay:.3s"><div class="card" data-card><canvas class="glyph" aria-hidden="true"></canvas><span class="tag">ART_03 · IA</span><h3 data-i18n="c3t">IA &amp; automatisation</h3><p data-i18n="c3d">L’intelligence artificielle là où elle crée vraiment de la valeur.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="block gut" id="methode" aria-label="Méthode">
+  <div class="wrap">
+    <div class="headrow rv">
+      <div class="stack"><p class="label" data-scramble data-i18n="mLabel">Méthode</p><h2 class="h2" data-i18n="mTitle">De l'idée <em class="ziri">au monde.</em></h2></div>
+      <p class="aside" data-i18n="mAside">Quatre étapes claires, pour savoir à chaque instant où en est votre projet.</p>
+    </div>
+    <div class="path">
+      <svg class="pathline" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+        <defs><linearGradient id="pg" x1="0" x2="1"><stop offset="0" stop-color="#8FB2FF"/><stop offset=".4" stop-color="#B79BFF"/><stop offset=".75" stop-color="#E58BFF"/><stop offset="1" stop-color="#FFC99A"/></linearGradient></defs>
+        <path class="ghost" d="M10 60 C 150 0, 290 120, 375 60 S 590 0, 625 60 S 840 120, 990 60"/>
+        <path class="draw" id="pathDraw" pathLength="1" d="M10 60 C 150 0, 290 120, 375 60 S 590 0, 625 60 S 840 120, 990 60"/>
+      </svg>
+      <ol class="steps">
+        <li class="step rv"><span class="node" aria-hidden="true"></span><span class="n">01</span><h3 data-i18n="m1t">Échange</h3><p data-i18n="m1d">Un premier appel pour comprendre votre idée, vos objectifs et vos contraintes. Vous repartez avec une vision claire.</p></li>
+        <li class="step rv" style="transition-delay:.15s"><span class="node" aria-hidden="true"></span><span class="n">02</span><h3 data-i18n="m2t">Maquette</h3><p data-i18n="m2d">Une direction visuelle et une maquette interactive à valider ensemble, avant d'écrire la moindre ligne de code.</p></li>
+        <li class="step rv" style="transition-delay:.3s"><span class="node" aria-hidden="true"></span><span class="n">03</span><h3 data-i18n="m3t">Création</h3><p data-i18n="m3d">Un développement par étapes, avec des versions à tester régulièrement. Vous suivez l'avancée en direct.</p></li>
+        <li class="step rv" style="transition-delay:.45s"><span class="node" aria-hidden="true"></span><span class="n">04</span><h3 data-i18n="m4t">Lancement</h3><p data-i18n="m4d">Mise en ligne, réglages fins, puis un accompagnement pour faire évoluer le projet.</p></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -300,29 +389,51 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 <section class="block gut" id="qui" aria-label="Qui">
   <div class="wrap who">
     <div class="bio rv">
-      <p class="label" data-scramble>Qui</p>
+      <p class="label" data-scramble data-i18n="wLabel">Qui</p>
       <h2 class="h2">François Beuvin</h2>
-      <p class="big">Ingénieur en informatique, IA et robotique. Passé par la recherche en bioinformatique, je construis des œuvres numériques qui unissent la rigueur de la science et <em class="ziri">la poésie de l'imaginaire.</em></p>
+      <p class="big" data-i18n="wBio">Ingénieur en informatique, IA et robotique. Passé par la recherche en bioinformatique, je construis des œuvres numériques qui unissent la rigueur de la science et <em class="ziri">la poésie de l'imaginaire.</em></p>
     </div>
     <div class="list">
-      <div class="item rv"><span>Ingénierie</span><div><b>Informatique, IA &amp; robotique</b><small>Du logiciel aux systèmes intelligents.</small></div></div>
-      <div class="item rv" style="transition-delay:.15s"><span>Recherche</span><div><b>Bioinformatique · CNRS, IRIT, INRAE</b><small>Spectrométrie de masse et design de protéines.</small></div></div>
-      <div class="item rv" style="transition-delay:.3s"><span>Web3</span><div><b>Blockchain depuis 2017</b><small>Exploration et pratique de l’écosystème crypto.</small></div></div>
+      <div class="item rv"><span data-i18n="w1k">Ingénierie</span><div><b data-i18n="w1t">Informatique, IA &amp; robotique</b><small data-i18n="w1d">Du logiciel aux systèmes intelligents.</small></div></div>
+      <div class="item rv" style="transition-delay:.15s"><span data-i18n="w2k">Recherche</span><div><b data-i18n="w2t">Bioinformatique · CNRS, IRIT, INRAE</b><small data-i18n="w2d">Spectrométrie de masse et design de protéines.</small></div></div>
+      <div class="item rv" style="transition-delay:.3s"><span>Web3</span><div><b data-i18n="w3t">Blockchain depuis 2017</b><small data-i18n="w3d">Exploration et pratique de l’écosystème crypto.</small></div></div>
     </div>
   </div>
 </section>
 
 <section class="contact gut" id="contact" aria-label="Contact">
-  <div class="panel cut rv">
-    <p class="label" data-scramble>Entrer en contact</p>
-    <h2>Parlons-en.</h2>
-    <p class="txt">Une idée d'application, de site ou d'outil d'IA ? Écrivez-moi : je reviens vers vous avec une première vision du projet.</p>
-    <div class="mail">
-      <a class="addr ziri" href="mailto:zeonevolution@proton.me">zeonevolution@proton.me</a>
-      <div class="mailacts">
-        <button class="link" type="button" id="copyMail">Copier l'adresse</button>
-        <a class="link" href="mailto:zeonevolution@proton.me">Ouvrir ma messagerie ↗</a>
+  <div class="panel rv">
+    <p class="label" data-scramble data-i18n="kLabel">Demander un devis</p>
+    <h2 data-i18n="kTitle">Parlons-en.</h2>
+    <p class="txt" data-i18n="kTxt">Décrivez votre idée en quelques lignes : je reviens vers vous avec une première vision du projet et une estimation.</p>
+    <form class="brief" id="brief" novalidate>
+      <div class="row"><label for="fName" data-i18n="fName">Nom</label><input id="fName" name="name" autocomplete="name" required></div>
+      <div class="row"><label for="fMail" data-i18n="fMail">Email</label><input id="fMail" name="email" type="email" autocomplete="email" required></div>
+      <div class="row"><label for="fType" data-i18n="fType">Type de projet</label>
+        <select id="fType" name="type">
+          <option data-i18n="o1">Application mobile</option>
+          <option data-i18n="o2">Site ou plateforme web</option>
+          <option data-i18n="o3">IA &amp; automatisation</option>
+          <option data-i18n="o4">Autre / je ne sais pas encore</option>
+        </select></div>
+      <div class="row"><label for="fBudget" data-i18n="fBudget">Budget envisagé</label>
+        <select id="fBudget" name="budget">
+          <option data-i18n="b0">À définir ensemble</option>
+          <option data-i18n="b1">Moins de 3 000 €</option>
+          <option data-i18n="b2">3 000 à 10 000 €</option>
+          <option data-i18n="b3">10 000 à 30 000 €</option>
+          <option data-i18n="b4">Plus de 30 000 €</option>
+        </select></div>
+      <div class="row full"><label for="fMsg" data-i18n="fMsg">Votre idée</label><textarea id="fMsg" name="message" rows="5" required></textarea></div>
+      <div class="row full actions">
+        <button class="btn" type="submit"><span data-i18n="fSend">Préparer ma demande</span> <span aria-hidden="true">→</span></button>
+        <p class="formnote" id="fNote" role="status"></p>
       </div>
+    </form>
+    <div class="mail">
+      <span class="or" data-i18n="kOr">ou écrivez directement à</span>
+      <a class="addr ziri" href="mailto:zeonevolution@proton.me">zeonevolution@proton.me</a>
+      <div class="mailacts"><button class="link" type="button" id="copyMail" data-i18n="kCopy">Copier l'adresse</button></div>
     </div>
   </div>
 </section>
@@ -330,13 +441,14 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 
 <footer class="gut wrap">
   <span class="mk">ZEONE</span>
-  <em class="ziri">Là où le code devient magie.</em>
+  <em class="ziri" data-i18n="ftTag">Là où le code devient magie.</em>
   <small>zeone.net · © 2026</small>
 </footer>
 
+<script src="lenis.min.js"></script>
 <script>
 function zGlyph(cv, kind, t, color, energy) {
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var dpr = Math.min(window.devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 2);
   var w = cv.clientWidth, h = cv.clientHeight;
   if (!w || !h) return;
   if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
@@ -453,6 +565,130 @@ function zGlyph(cv, kind, t, color, energy) {
   var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
   var $ = function (id) { return document.getElementById(id); };
   if (!reduce) document.documentElement.classList.add('anim');
+  /* ---------- language ---------- */
+  var LANG = 'fr';
+  try { LANG = localStorage.getItem('zeone-lang') || ''; } catch (e) { LANG = ''; }
+  if (LANG !== 'fr' && LANG !== 'en') LANG = /^fr/i.test(navigator.language || 'fr') ? 'fr' : 'en';
+  var EN = {
+    next: 'Next', aNext: 'Next section', nProj: 'Projects', nServ: 'Services', nMeth: 'Process', nWho: 'About',
+    sound: 'Sound', aSound: 'Turn ambient sound on', langOther: 'FR', aLang: 'Passer en français', cta: 'Get a quote',
+    hLabel: 'Digital creation studio', hLead: 'I design and build custom apps, websites and AI tools. Digital worlds crafted with taste, <em class="ziri">made to live on their own.</em>',
+    hCta: 'Get a quote', hExplore: 'Explore the universe', hHint: '// Move closer or touch the crystal',
+    sLabel: 'The signal', sBig: 'Then everything opens.', sSub: 'One studio · a constellation of worlds',
+    pLabel: 'Selected work', pTitle: 'The <em class="ziri">worlds.</em>', pStatus: 'Status', pType: 'Type', pAlgo: 'Algorithm',
+    aPrev: 'Previous project', aNextP: 'Next project',
+    gLabel: 'In the making', gTitle: 'Worlds <em class="ziri">to come.</em>', gAside: 'Domains reserved for the next projects of the Zeone universe.',
+    vLabel: 'What I create', vTitle: 'Three crafts, <em class="ziri">one standard of care.</em>',
+    c1t: 'Mobile apps', c1d: 'iOS and Android from a single codebase, with real-time data.',
+    c2t: 'Websites &amp; platforms', c2d: 'From showcase sites to full platforms, built to leave a mark.',
+    c3t: 'AI &amp; automation', c3d: 'Artificial intelligence where it truly creates value.',
+    mLabel: 'Process', mTitle: 'From idea <em class="ziri">to world.</em>', mAside: 'Four clear steps, so you always know where your project stands.',
+    m1t: 'Discovery', m1d: 'A first call to understand your idea, your goals and your constraints. You leave with a clear vision.',
+    m2t: 'Mockup', m2d: 'A visual direction and an interactive mockup to approve together, before a single line of code is written.',
+    m3t: 'Build', m3d: 'Development in stages, with regular versions to test. You follow progress live.',
+    m4t: 'Launch', m4d: 'Going live, fine-tuning, then ongoing support to help the project grow.',
+    wLabel: 'About', wBio: 'Engineer in computer science, AI and robotics. With a background in bioinformatics research, I build digital work that unites the rigour of science with <em class="ziri">the poetry of imagination.</em>',
+    w1k: 'Engineering', w1t: 'Computer science, AI &amp; robotics', w1d: 'From software to intelligent systems.',
+    w2k: 'Research', w2t: 'Bioinformatics · CNRS, IRIT, INRAE', w2d: 'Mass spectrometry and protein design.',
+    w3t: 'Blockchain since 2017', w3d: 'Exploring and practising the crypto ecosystem.',
+    kLabel: 'Get a quote', kTitle: "Let's talk.", kTxt: 'Describe your idea in a few lines: I will come back to you with a first vision of the project and an estimate.',
+    fName: 'Name', fMail: 'Email', fType: 'Project type', fBudget: 'Budget', fMsg: 'Your idea', fSend: 'Prepare my request',
+    o1: 'Mobile app', o2: 'Website or web platform', o3: 'AI &amp; automation', o4: "Other / I don't know yet",
+    b0: 'To be defined together', b1: 'Under €3,000', b2: '€3,000 to €10,000', b3: '€10,000 to €30,000', b4: 'Over €30,000',
+    kOr: 'or write directly to', kCopy: 'Copy address', ftTag: 'Where code becomes magic.'
+  };
+  function L(fr, en) { return LANG === 'en' ? en : fr; }
+  if (LANG === 'en') {
+    document.documentElement.lang = 'en';
+    document.title = 'Zeone — digital creation studio';
+    document.querySelectorAll('[data-i18n]').forEach(function (el) { var v = EN[el.dataset.i18n]; if (v != null) el.innerHTML = v; });
+    document.querySelectorAll('[data-i18n-aria]').forEach(function (el) { var v = EN[el.dataset.i18nAria]; if (v != null) el.setAttribute('aria-label', v); });
+  }
+  $('langBtn').addEventListener('click', function () {
+    try { localStorage.setItem('zeone-lang', LANG === 'en' ? 'fr' : 'en'); } catch (e) {}
+    location.reload();
+  });
+
+  /* ---------- smooth scroll (Lenis) ---------- */
+  var lenis = null;
+  if (!reduce && window.Lenis) {
+    try {
+      lenis = new Lenis({ lerp: .085, smoothWheel: true, wheelMultiplier: .9 });
+      (function lraf(t) { lenis.raf(t); requestAnimationFrame(lraf); })(performance.now());
+    } catch (e) { lenis = null; }
+  }
+  function smoothTo(y) {
+    if (lenis) lenis.scrollTo(y, { duration: 1.6 });
+    else window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.getAttribute('href').slice(1), el = id ? document.getElementById(id) : null;
+      if (!el && id !== 'top') return;
+      e.preventDefault();
+      smoothTo(el ? el.getBoundingClientRect().top + scrollY : 0);
+    });
+  });
+
+  /* ---------- ambient sound (generated, opt-in) ---------- */
+  var audio = null, soundOn = false, lastChime = 0;
+  function initAudio() {
+    var AC = window.AudioContext || window.webkitAudioContext; if (!AC) return null;
+    var ac = new AC(), master = ac.createGain(); master.gain.value = 0; master.connect(ac.destination);
+    var lp = ac.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 650; lp.Q.value = .6; lp.connect(master);
+    var lfo = ac.createOscillator(); lfo.frequency.value = .045; var lg = ac.createGain(); lg.gain.value = 320; lfo.connect(lg); lg.connect(lp.frequency); lfo.start();
+    [[110, 'sine', .2], [110.35, 'sine', .16], [164.81, 'triangle', .06], [220.6, 'sine', .08], [329.63, 'sine', .03], [493.88, 'sine', .012]].forEach(function (o) {
+      var osc = ac.createOscillator(); osc.type = o[1]; osc.frequency.value = o[0];
+      var g = ac.createGain(); g.gain.value = o[2]; osc.connect(g); g.connect(lp); osc.start();
+    });
+    var dl = ac.createDelay(1.5); dl.delayTime.value = .42; var fb = ac.createGain(); fb.gain.value = .42;
+    dl.connect(fb); fb.connect(dl); var wet = ac.createGain(); wet.gain.value = .55; dl.connect(wet); wet.connect(master);
+    return { ac: ac, master: master, dl: dl };
+  }
+  function chime(base, vol) {
+    if (!soundOn || !audio) return;
+    var ac = audio.ac, t = ac.currentTime;
+    if (t - lastChime < .09) return; lastChime = t;
+    var steps = [0, 2, 4, 7, 9, 12, 14, 16];
+    var f = (base || 523.25) * Math.pow(2, steps[(Math.random() * steps.length) | 0] / 12);
+    var o = ac.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    var g = ac.createGain(); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol || .05, t + .012); g.gain.exponentialRampToValueAtTime(.0001, t + 1.8);
+    o.connect(g); g.connect(audio.master); g.connect(audio.dl); o.start(t); o.stop(t + 1.9);
+  }
+  var soundBtn = $('soundBtn');
+  soundBtn.addEventListener('click', function () {
+    if (!audio) audio = initAudio();
+    if (!audio) return;
+    audio.ac.resume();
+    soundOn = !soundOn;
+    audio.master.gain.setTargetAtTime(soundOn ? .32 : 0, audio.ac.currentTime, soundOn ? 1.2 : .4);
+    soundBtn.setAttribute('aria-pressed', soundOn ? 'true' : 'false');
+    soundBtn.classList.toggle('on', soundOn);
+    if (soundOn) setTimeout(function () { chime(523.25, .06); }, 300);
+  });
+  document.addEventListener('pointerover', function (e) {
+    if (!soundOn) return;
+    var t = e.target.closest && e.target.closest('a,button,.card,.seed,.shard,.step');
+    if (t && !t.contains(e.relatedTarget)) chime(t.classList.contains('shard') ? 392 : 523.25, .04);
+  });
+
+  /* ---------- contact brief ---------- */
+  $('brief').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = this, note = $('fNote'), bad = null;
+    ['fName', 'fMail', 'fMsg'].forEach(function (id) { var el = $(id); var ok = el.value.trim() && (id !== 'fMail' || /.+@.+\..+/.test(el.value)); el.classList.toggle('err', !ok); if (!ok && !bad) bad = el; });
+    if (bad) { note.textContent = L('Merci de remplir votre nom, un email valide et quelques mots sur votre idée.', 'Please fill in your name, a valid email and a few words about your idea.'); bad.focus(); return; }
+    var type = $('fType').value, budget = $('fBudget').value;
+    var subject = L('Demande de devis — ', 'Quote request — ') + type;
+    var body = [L('Nom', 'Name') + ' : ' + $('fName').value.trim(), 'Email : ' + $('fMail').value.trim(), L('Type de projet', 'Project type') + ' : ' + type, L('Budget', 'Budget') + ' : ' + budget, '', $('fMsg').value.trim()].join('\n');
+    note.textContent = L("Votre messagerie s'ouvre avec la demande prête : il ne reste qu'à l'envoyer. Rien ne s'ouvre ? Copiez l'adresse ci-dessous.", 'Your email app opens with the request ready to send. Nothing opened? Copy the address below.');
+    window.location.href = 'mailto:zeonevolution@proton.me?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    chime(659.25, .06);
+  });
+
+  /* ---------- method path ---------- */
+  var pathDraw = $('pathDraw'), methode = $('methode');
+
 
   /* ---------- text scramble (decode) ---------- */
   var GL = '▓▒░/\\|<>_-+=*#ΣΦΩΔλ0123456789ABCDEFXZ';
@@ -503,22 +739,22 @@ function zGlyph(cv, kind, t, color, energy) {
   } else rvs.forEach(function (el) { el.classList.add('in'); });
 
   /* ---------- HUD ---------- */
-  var SECS = ['top', 'signal', 'projets', 'services', 'qui', 'contact'].map($);
+  var SECS = ['top', 'signal', 'projets', 'services', 'methode', 'qui', 'contact'].map($);
   $('nextBtn').addEventListener('click', function () {
     var y = scrollY + 10;
     for (var i = 0; i < SECS.length; i++) {
       var top = SECS[i].getBoundingClientRect().top + scrollY;
-      if (top > y + 20) { scrollTo({ top: top, behavior: reduce ? 'auto' : 'smooth' }); return; }
+      if (top > y + 20) { smoothTo(top); return; }
     }
-    scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    smoothTo(0);
   });
   setInterval(function () { if (!reduce) $('sig').textContent = 'Signal ' + (97.6 + Math.random() * 2.1).toFixed(2) + '%'; }, 900);
 
   /* ---------- copy mail ---------- */
   $('copyMail').addEventListener('click', function () {
     var b = this;
-    var done = function () { b.textContent = 'Adresse copiée'; setTimeout(function () { b.textContent = "Copier l'adresse"; }, 2200); };
-    var sel = function () { var r = document.createRange(); r.selectNodeContents(document.querySelector('.mail .addr')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Adresse sélectionnée'; };
+    var done = function () { b.textContent = L('Adresse copiée', 'Address copied'); setTimeout(function () { b.textContent = L("Copier l'adresse", 'Copy address'); }, 2200); };
+    var sel = function () { var r = document.createRange(); r.selectNodeContents(document.querySelector('.mail .addr')); var s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = L('Adresse sélectionnée', 'Address selected'); };
     try { if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('zeonevolution@proton.me').then(done, sel); else sel(); } catch (e) { sel(); }
   });
 
@@ -560,7 +796,7 @@ function zGlyph(cv, kind, t, color, energy) {
   $('top').addEventListener('pointerdown', function (e) {
     if (e.target.closest('a,button')) return;
     var d = Math.hypot(e.clientX - CXY[0], e.clientY - CXY[1]);
-    if (d < CXY[2] * 3.2) shocks.push(performance.now());
+    if (d < CXY[2] * 3.2) { shocks.push(performance.now()); chime(196, .09); }
   });
   var roA = $('roA'), roB = $('roB'), roC = $('roC'), roTick = 0;
   function rot(v, a) { // a: [cy, sy, cx, sx, cz, sz]
@@ -575,7 +811,7 @@ function zGlyph(cv, kind, t, color, energy) {
     if (!heroVis) return;
     var time = reduce ? 0 : t;
     mx += (tmx - mx) * .05; my += (tmy - my) * .05;
-    var dpr = Math.min(devicePixelRatio || 1, 2), w = hcv.clientWidth, h = hcv.clientHeight;
+    var dpr = Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 2), w = hcv.clientWidth, h = hcv.clientHeight;
     if (!w || !h) return;
     if (hcv.width !== Math.round(w * dpr) || hcv.height !== Math.round(h * dpr)) { hcv.width = Math.round(w * dpr); hcv.height = Math.round(h * dpr); }
     var ctx = hctx; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -601,7 +837,7 @@ function zGlyph(cv, kind, t, color, energy) {
     gl.addColorStop(0, rgba(auraC, .3 + lum * .1 + e * .15)); gl.addColorStop(.35, 'rgba(90,90,255,.08)'); gl.addColorStop(1, 'rgba(4,5,11,0)');
     ctx.fillStyle = gl; ctx.fillRect(0, 0, w, hz);
     // god rays
-    var NR = 40;
+    var NR = narrow ? 22 : 40;
     for (i = 0; i < NR; i++) {
       var a0 = i / NR * 6.283 + T * .00006, len = S * (2.4 + 2.2 * (.5 + .5 * Math.sin(i * 7.31 + T * .0009)) + e * 1.6), wd = .016 + .01 * Math.sin(i * 3.1);
       var rc = pal(i / NR + time * .00005);
@@ -617,8 +853,8 @@ function zGlyph(cv, kind, t, color, energy) {
     for (var c = 0; c < curves; c++) {
       var Rr = 1, rr = [.31, .43, .23][c] + .04 * Math.sin(time * .00021 + c), dd = [.62, .5, .8][c] + .12 * Math.sin(time * .00017 + c * 2);
       var path = new Path2D(), first = true;
-      for (var s2 = 0; s2 <= 160; s2++) {
-        var th = s2 / 160 * 6.283 / FOLD * 3;
+      for (var s2 = 0, SN = narrow ? 90 : 160; s2 <= SN; s2++) {
+        var th = s2 / SN * 6.283 / FOLD * 3;
         var x = (Rr - rr) * Math.cos(th) + dd * Math.cos((Rr - rr) / rr * th);
         var y = (Rr - rr) * Math.sin(th) - dd * Math.sin((Rr - rr) / rr * th);
         var sc = MR * (.55 + c * .2) / (Rr - rr + dd);
@@ -747,22 +983,22 @@ function zGlyph(cv, kind, t, color, energy) {
   requestAnimationFrame(hero);
 
   /* ---------- signal sentence ---------- */
-  var SENT = "Chaque idée mérite un monde. Zeone les fait naître, avec rigueur, avec goût, et une part de magie.";
-  var MAGIC = { 'monde.': 1, 'naître,': 1, 'magie.': 1 };
+  var SENT = L("Chaque idée mérite un monde. Zeone les fait naître, avec rigueur, avec goût, et une part de magie.", "Every idea deserves a world. Zeone brings them to life, with rigour, with taste, and a touch of magic.");
+  var MAGIC = { 'monde.': 1, 'naître,': 1, 'magie.': 1, 'world.': 1, 'life,': 1, 'magic.': 1 };
   var sentEl = $('sentence');
   var words = SENT.split(' ').map(function (t) { var s = document.createElement('span'); s.className = 'w' + (MAGIC[t] ? ' magic' : ''); s.textContent = t + ' '; sentEl.appendChild(s); return s; });
 
   /* ---------- projects orbit: one generative world per project ---------- */
   var PROJ = [
-    { id: '01', name: 'Innernet', kind: 'Plateforme web', status: 'En développement', url: 'https://innernet.work', dom: 'innernet.work', desc: 'Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.', glow: '#6F8BFF', algo: 'Sphère de Fibonacci · 520 pts' },
-    { id: '02', name: 'noiz', kind: 'Application mobile', status: 'En développement', url: 'https://noiz.world', dom: 'noiz.world', desc: 'Une application mobile temps réel, co-fondée à quatre entre la France et Barcelone.', glow: '#D45BFF', algo: 'Onde radiale · 64 bandes' },
-    { id: '03', name: 'Kastleveo', kind: 'Plateforme web', status: 'En construction', url: 'https://kastleveo.com', dom: 'kastleveo.com', desc: 'Rassemblements curatés et location de châteaux d’exception, pour une clientèle haut de gamme.', glow: '#FFB870', algo: 'Rosace · symétrie 12' },
-    { id: '04', name: 'Shai Mara', kind: 'Collectif artistique', status: 'Lancement', url: 'https://shaimara.com', dom: 'shaimara.com', desc: 'Un collectif d’immersion artistique. Premier rendez-vous : quatre jours hors du temps dans un château.', glow: '#FF4F8B', algo: 'Attracteur de Clifford' },
-    { id: '05', name: 'Multivers Magazine', kind: 'Magazine en ligne', status: 'En ligne', url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: 'Un magazine en ligne, déjà publié sur multiversmagazine.com.', glow: '#9FB8FF', algo: 'Bulles-univers · 7 mondes' }
+    { id: '01', name: 'Innernet', kind: L('Plateforme web', 'Web platform'), status: L('En développement', 'In development'), url: 'https://innernet.work', dom: 'innernet.work', desc: L('Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.', 'A platform for retreats, to step away from the noise and reconnect with yourself.'), glow: '#6F8BFF', algo: L('Sphère de Fibonacci · 520 pts', 'Fibonacci sphere · 520 pts') },
+    { id: '02', name: 'noiz', kind: L('Application mobile', 'Mobile app'), status: L('En développement', 'In development'), url: 'https://noiz.world', dom: 'noiz.world', desc: L('Une application mobile temps réel, co-fondée à quatre entre la France et Barcelone.', 'A real-time mobile app, co-founded by four between France and Barcelona.'), glow: '#D45BFF', algo: L('Onde radiale · 64 bandes', 'Radial wave · 64 bands') },
+    { id: '03', name: 'Kastleveo', kind: L('Plateforme web', 'Web platform'), status: L('En construction', 'Under construction'), url: 'https://kastleveo.com', dom: 'kastleveo.com', desc: L('Rassemblements curatés et location de châteaux d’exception, pour une clientèle haut de gamme.', 'Curated gatherings and exceptional château rentals for a high-end clientele.'), glow: '#FFB870', algo: L('Rosace · symétrie 12', 'Rose window · 12-fold') },
+    { id: '04', name: 'Shai Mara', kind: L('Collectif artistique', 'Art collective'), status: L('Lancement', 'Launching'), url: 'https://shaimara.com', dom: 'shaimara.com', desc: L('Un collectif d’immersion artistique. Premier rendez-vous : quatre jours hors du temps dans un château.', 'An immersive art collective. First gathering: four timeless days in a French château.'), glow: '#FF4F8B', algo: L('Attracteur de Clifford', 'Clifford attractor') },
+    { id: '05', name: 'Multivers Magazine', kind: L('Magazine en ligne', 'Online magazine'), status: L('En ligne', 'Live'), url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: L('Un magazine en ligne, déjà publié sur multiversmagazine.com.', 'An online magazine, already published at multiversmagazine.com.'), glow: '#9FB8FF', algo: L('Bulles-univers · 7 mondes', 'Bubble universes · 7 worlds') }
   ];
   var NP = PROJ.length;
   function prep(cv) {
-    var dpr = Math.min(devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight;
+    var dpr = Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 2), w = cv.clientWidth, h = cv.clientHeight;
     if (!w || !h) return null;
     if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
     var c = cv.getContext('2d'); c.setTransform(dpr, 0, 0, dpr, 0, 0); c.clearRect(0, 0, w, h);
@@ -901,21 +1137,21 @@ function zGlyph(cv, kind, t, color, energy) {
   function goTo(i) {
     i = Math.max(0, Math.min(NP - 1, i));
     var span = orbitSec.offsetHeight - innerHeight, top = orbitSec.getBoundingClientRect().top + scrollY;
-    scrollTo({ top: top + span * (i / (NP - 1)) * .92 + 2, behavior: reduce ? 'auto' : 'smooth' });
+    smoothTo(top + span * (i / (NP - 1)) * .92 + 2);
   }
   $('prevP').addEventListener('click', function () { goTo(current - 1); });
   $('nextP').addEventListener('click', function () { goTo(current + 1); });
   function setActive(i) {
     if (i === current) return;
     var first = current < 0; current = i; var p = PROJ[i], k = first ? 0 : 1;
-    scramble($('coId'), 'PROJET_' + p.id, 500 * k);
+    scramble($('coId'), L('PROJET_', 'PROJECT_') + p.id, 500 * k);
     scramble($('coName'), p.name, 650 * k);
     scramble($('coStatus'), p.status, 600 * k);
     scramble($('coKind'), p.kind, 600 * k);
     scramble($('coAlgo'), p.algo, 600 * k);
-    $('coOrb').textContent = 'Orbite ' + p.id + ' / 0' + NP;
+    $('coOrb').textContent = L('Orbite ', 'Orbit ') + p.id + ' / 0' + NP;
     $('coDesc').textContent = p.desc;
-    var link = $('coLink'); link.href = p.url; link.textContent = 'Visiter ' + p.dom + ' ↗';
+    var link = $('coLink'); link.href = p.url; link.textContent = L('Visiter ', 'Visit ') + p.dom + ' ↗';
     scramble($('pagerNow'), p.id + ' · ' + p.name, 450 * k);
   }
   var leaders = $('leaders'), coA = $('coA'), coB = $('coB'), coC = $('coC');
@@ -967,7 +1203,8 @@ function zGlyph(cv, kind, t, color, energy) {
     orbitFrame();
     var idx = 0;
     SECS.forEach(function (s, i) { if (s.getBoundingClientRect().top < vh * .5) idx = i; });
-    $('sect').textContent = 'Secteur ' + String(idx + 1).padStart(2, '0') + ' / 06';
+    $('sect').textContent = L('Secteur ', 'Sector ') + String(idx + 1).padStart(2, '0') + ' / 07';
+    var mr = methode.getBoundingClientRect(); pathDraw.style.strokeDashoffset = (1 - clamp((vh * .8 - mr.top) / (mr.height * .75))).toFixed(4);
     navs.forEach(function (a) { a.classList.toggle('on', a.dataset.sec === SECS[idx].id); });
     if (!reduce && Math.abs(y - lastY) > 90) { document.documentElement.classList.add('glitch'); clearTimeout(glitchT); glitchT = setTimeout(function () { document.documentElement.classList.remove('glitch'); }, 160); }
     lastY = y;
@@ -1004,11 +1241,11 @@ function zGlyph(cv, kind, t, color, energy) {
   function draw(t) {
     requestAnimationFrame(draw);
     if (!sigVis) return;
-    var dpr = Math.min(devicePixelRatio || 1, 2), w = cv.clientWidth, h = cv.clientHeight;
+    var dpr = Math.min(devicePixelRatio || 1, innerWidth < 760 ? 1.25 : 2), w = cv.clientWidth, h = cv.clientHeight;
     if (!w || !h) return;
     if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(h * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = '#04050B'; ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'source-over'; ctx.clearRect(0, 0, w, h);
     var q = Q, time = reduce ? 0 : t, P = PP;
     var a = ease(clamp(q / .42)), b = ease(clamp((q - .68) / .3)), hold = a * (1 - b);
     var cx = w / 2, cy = h * .56, s = Math.min(w, h) / 8.2;
