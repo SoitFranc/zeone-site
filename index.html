@@ -200,8 +200,10 @@ footer small{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:v
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-stopped{overflow:hidden}
-.hero canvas{-webkit-mask-image:linear-gradient(#000 74%,transparent 100%);mask-image:linear-gradient(#000 74%,transparent 100%)}
-.signal .stage canvas{-webkit-mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 18%,#000 82%,transparent 100%)}
+.hero canvas{-webkit-mask-image:linear-gradient(#000 66%,transparent 100%);mask-image:linear-gradient(#000 66%,transparent 100%)}
+.signal .stage canvas{-webkit-mask-image:linear-gradient(transparent 0,#000 28%,#000 72%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 28%,#000 72%,transparent 100%)}
+.orbit .stage{background:none!important}
+.orbit .stage::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(70,60,160,.24),transparent 62%);-webkit-mask-image:linear-gradient(transparent 0,#000 30%,#000 80%,transparent 100%);mask-image:linear-gradient(transparent 0,#000 30%,#000 80%,transparent 100%)}
 .signal{margin-top:-18vh}
 .orbit{margin-top:-10vh}
 .tool{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 12px;background:none;border:0;color:var(--mute);font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:color .3s;text-shadow:0 0 12px #04050B}
@@ -694,7 +696,7 @@ function zGlyph(cv, kind, t, color, energy) {
   var GL = '▓▒░/\\|<>_-+=*#ΣΦΩΔλ0123456789ABCDEFXZ';
   function scramble(el, text, dur) {
     if (!el) return;
-    if (reduce) { el.textContent = text; return; }
+    if (reduce || !(dur > 0)) { el.__sc = 0; el.textContent = text; return; }
     var start = performance.now(), n = text.length;
     el.__sc = start;
     (function step(now) {
