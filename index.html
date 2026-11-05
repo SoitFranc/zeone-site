@@ -123,13 +123,13 @@ main,footer{position:relative;z-index:1}
 .sigBot .big{margin:0;font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(34px,4.2vw,60px);line-height:1.1}
 
 /* orbit of projects */
-.orbit{position:relative;height:440vh}
+.orbit{position:relative;height:500vh}
 .orbit .stage{background:radial-gradient(ellipse at 50% 50%,rgba(70,60,160,.24),transparent 62%)}
 .orbit .head{position:absolute;z-index:3;top:calc(110px + env(safe-area-inset-top,0px));left:0;right:0}
 .orbit .head .wrap{display:flex;flex-direction:column;gap:14px}
 .ring3d{position:absolute;left:50%;top:48%;width:min(1100px,92vw);aspect-ratio:3.2;transform:translate(-50%,-50%);border-radius:50%;box-shadow:0 0 0 1px rgba(183,155,255,.1),0 0 60px rgba(130,110,255,.14),inset 0 0 60px rgba(130,110,255,.1);pointer-events:none}
 .ring3d::after{content:'';position:absolute;inset:18% 8%;border-radius:50%;background:radial-gradient(ellipse,rgba(120,100,255,.12),transparent 70%)}
-.shard{position:absolute;left:50%;top:48%;width:clamp(170px,21vw,280px);aspect-ratio:1;margin-left:calc(clamp(170px,21vw,280px) / -2);margin-top:calc(clamp(170px,21vw,280px) / -2);will-change:transform,opacity,filter;cursor:pointer}
+.shard{position:absolute;left:50%;top:50%;--sz:clamp(140px,min(21vw,34vh),280px);width:var(--sz);aspect-ratio:1;margin-left:calc(var(--sz) / -2);margin-top:calc(var(--sz) / -2);will-change:transform,opacity,filter;cursor:pointer}
 .shard .glow{position:absolute;inset:-14%;filter:blur(40px);opacity:.32;border-radius:50%}
 .shard .world{position:absolute;inset:0;width:100%;height:100%;display:block}
 .callouts{position:absolute;inset:0;z-index:4;pointer-events:none}
@@ -137,8 +137,8 @@ main,footer{position:relative;z-index:1}
 .co{position:absolute;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);line-height:1.7;font-variant-numeric:tabular-nums}
 .co b{display:block;color:var(--ink);font-weight:400}
 .co .nm{display:block;font-family:var(--display);font-size:clamp(40px,4.6vw,64px);letter-spacing:-.01em;text-transform:none;color:var(--ink);line-height:1}
-.coA{right:calc(50% + clamp(110px,13vw,200px));top:27%;text-align:right}
-.coB{left:calc(50% + clamp(110px,12vw,190px));top:33%}
+.coA{right:calc(50% + clamp(100px,min(13vw,20vh),200px));top:max(29%,calc(118px + clamp(44px,min(5.4vw,9vh),72px) + 40px));text-align:right}
+.coB{left:calc(50% + clamp(100px,min(12vw,19vh),190px));top:max(34%,calc(118px + clamp(44px,min(5.4vw,9vh),72px) + 60px))}
 .coC{left:calc(50% + clamp(110px,12vw,190px));top:55%}
 .orbit .foot{position:absolute;z-index:5;left:0;right:0;bottom:calc(76px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center}
 .orbit .desc{margin:0;max-width:520px;font-size:17px;line-height:1.55;color:rgba(244,241,233,.8);min-height:3.1em;text-wrap:balance}
@@ -252,6 +252,8 @@ html.lenis,html.lenis body{height:auto}
 .mail .addr{font-size:clamp(24px,3.2vw,38px)}
 @media (max-width:620px){.brief{grid-template-columns:1fr}}
 .signal .stage{pointer-events:none}
+@media (min-width:861px){.orbit .head .h2{font-size:clamp(44px,min(5.4vw,9vh),72px)}}
+@media (min-width:861px) and (max-height:820px){.coC{display:none}.orbit .desc{font-size:15px;min-height:0}.orbit .foot{gap:10px;bottom:calc(56px + env(safe-area-inset-bottom,0px))}}
 </style>
 </head>
 <body>
@@ -325,7 +327,7 @@ html.lenis,html.lenis body{height:auto}
       <svg aria-hidden="true"><g id="leaders" fill="none" stroke="rgba(200,190,255,.38)" stroke-width="1"></g></svg>
       <div class="co coA" id="coA"><span id="coId">PROJET_01</span><span class="nm" id="coName">Innernet</span></div>
       <div class="co coB" id="coB" aria-hidden="true"><span data-i18n="pStatus">Statut</span><b id="coStatus">En développement</b><span data-i18n="pType">Type</span><b id="coKind">Plateforme web</b></div>
-      <div class="co coC" id="coC" aria-hidden="true"><span data-i18n="pAlgo">Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 05</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
+      <div class="co coC" id="coC" aria-hidden="true"><span data-i18n="pAlgo">Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 06</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
     </div>
     <div class="foot gut">
       <p class="desc" id="coDesc">Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.</p>
@@ -346,7 +348,6 @@ html.lenis,html.lenis body{height:auto}
       <p class="aside" data-i18n="gAside">Des domaines réservés pour les prochains projets de l'univers Zeone.</p>
     </div>
     <div class="seeds rv">
-      <div class="seed"><span class="mini" style="--c:conic-gradient(#B79BFF,#6F8BFF,#A9C4FF,#B79BFF)" aria-hidden="true"></span><span><b>Collisyo</b><small>collisyo.com</small></span></div>
       <div class="seed"><span class="mini" style="--c:conic-gradient(#7A5CFF,#FFC99A,#B79BFF,#7A5CFF)" aria-hidden="true"></span><span><b>Organisazion</b><small>organisazion.com</small></span></div>
       <div class="seed"><span class="mini" style="--c:conic-gradient(#A9C4FF,#C04BFF,#8FB2FF,#A9C4FF)" aria-hidden="true"></span><span><b>Charity on Chain</b><small>charityonchain.org</small></span></div>
     </div>
@@ -996,7 +997,8 @@ function zGlyph(cv, kind, t, color, energy) {
     { id: '02', name: 'noiz', kind: L('Application mobile', 'Mobile app'), status: L('En développement', 'In development'), url: 'https://noiz.world', dom: 'noiz.world', desc: L('Une application mobile temps réel, co-fondée à quatre entre la France et Barcelone.', 'A real-time mobile app, co-founded by four between France and Barcelona.'), glow: '#D45BFF', algo: L('Onde radiale · 64 bandes', 'Radial wave · 64 bands') },
     { id: '03', name: 'Kastleveo', kind: L('Plateforme web', 'Web platform'), status: L('En construction', 'Under construction'), url: 'https://kastleveo.com', dom: 'kastleveo.com', desc: L('Rassemblements curatés et location de châteaux d’exception, pour une clientèle haut de gamme.', 'Curated gatherings and exceptional château rentals for a high-end clientele.'), glow: '#FFB870', algo: L('Rosace · symétrie 12', 'Rose window · 12-fold') },
     { id: '04', name: 'Shai Mara', kind: L('Collectif artistique', 'Art collective'), status: L('Lancement', 'Launching'), url: 'https://shaimara.com', dom: 'shaimara.com', desc: L('Un collectif d’immersion artistique. Premier rendez-vous : quatre jours hors du temps dans un château.', 'An immersive art collective. First gathering: four timeless days in a French château.'), glow: '#FF4F8B', algo: L('Attracteur de Clifford', 'Clifford attractor') },
-    { id: '05', name: 'Multivers Magazine', kind: L('Magazine en ligne', 'Online magazine'), status: L('En ligne', 'Live'), url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: L('Un magazine en ligne, déjà publié sur multiversmagazine.com.', 'An online magazine, already published at multiversmagazine.com.'), glow: '#9FB8FF', algo: L('Bulles-univers · 7 mondes', 'Bubble universes · 7 worlds') }
+    { id: '05', name: 'Multivers Magazine', kind: L('Magazine en ligne', 'Online magazine'), status: L('En ligne', 'Live'), url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: L('Un magazine en ligne, déjà publié sur multiversmagazine.com.', 'An online magazine, already published at multiversmagazine.com.'), glow: '#9FB8FF', algo: L('Bulles-univers · 7 mondes', 'Bubble universes · 7 worlds') },
+    { id: '06', name: 'Collisyo', kind: L('Projet en ligne', 'Live project'), status: L('En ligne', 'Live'), url: 'https://collisyo.com', dom: 'collisyo.com', desc: L('Un projet déjà en ligne sur collisyo.com.', 'A project already live at collisyo.com.'), glow: '#7FB8FF', algo: L('Collisions élastiques · 34 corps', 'Elastic collisions · 34 bodies') }
   ];
   var NP = PROJ.length;
   function prep(cv) {
@@ -1111,7 +1113,52 @@ function zGlyph(cv, kind, t, color, energy) {
         c.fillStyle = 'rgba(255,255,255,.35)'; c.beginPath(); c.arc(x - r * .35, y - r * .4, r * .12, 0, 6.283); c.fill();
       });
       c.globalCompositeOperation = 'source-over';
-    }
+    },
+    (function () {
+      var B = [], sparks = [], last = 0, seed = 9;
+      function r() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+      for (var i = 0; i < 34; i++) { var a = r() * 6.283, d = Math.sqrt(r()) * .7; B.push({ x: Math.cos(a) * d, y: Math.sin(a) * d, vx: (r() - .5) * .5, vy: (r() - .5) * .5, r: .035 + r() * .045, h: 200 + r() * 90 }); }
+      return function collisyo(g, t, act) {
+        var c = g.c, dt = Math.min(.05, Math.max(0, (t - last) / 1000)) * (1 + act * 1.5); last = t;
+        if (reduce) dt = 0;
+        for (var i = 0; i < B.length; i++) {
+          var p = B[i]; p.x += p.vx * dt; p.y += p.vy * dt;
+          var dd = Math.hypot(p.x, p.y);
+          if (dd + p.r > .92) { var nx = p.x / dd, ny = p.y / dd, dot = p.vx * nx + p.vy * ny; if (dot > 0) { p.vx -= 2 * dot * nx; p.vy -= 2 * dot * ny; } p.x = nx * (.92 - p.r); p.y = ny * (.92 - p.r); }
+          for (var j = i + 1; j < B.length; j++) {
+            var q = B[j], dx = q.x - p.x, dy = q.y - p.y, d2 = Math.hypot(dx, dy), m = p.r + q.r;
+            if (d2 < m && d2 > 0) {
+              var ux = dx / d2, uy = dy / d2, rel = (q.vx - p.vx) * ux + (q.vy - p.vy) * uy;
+              if (rel < 0) { p.vx += rel * ux; p.vy += rel * uy; q.vx -= rel * ux; q.vy -= rel * uy; if (sparks.length < 40) sparks.push({ x: p.x + ux * p.r, y: p.y + uy * p.r, t: t, h: (p.h + q.h) / 2 }); }
+              var ov = (m - d2) / 2; p.x -= ux * ov; p.y -= uy * ov; q.x += ux * ov; q.y += uy * ov;
+            }
+          }
+        }
+        var R = g.R * 1.05;
+        c.globalCompositeOperation = 'lighter';
+        var bg = c.createRadialGradient(g.cx, g.cy, 0, g.cx, g.cy, R);
+        bg.addColorStop(0, 'rgba(110,150,255,.08)'); bg.addColorStop(.92, 'rgba(110,150,255,.04)'); bg.addColorStop(1, 'rgba(160,190,255,.35)');
+        c.fillStyle = bg; c.beginPath(); c.arc(g.cx, g.cy, R * .97, 0, 6.283); c.fill();
+        c.lineWidth = .6;
+        for (i = 0; i < B.length; i++) for (j = i + 1; j < B.length; j++) {
+          var a1 = B[i], b1 = B[j], dl = Math.hypot(a1.x - b1.x, a1.y - b1.y);
+          if (dl < .3) { c.strokeStyle = 'rgba(170,190,255,' + ((1 - dl / .3) * .25).toFixed(3) + ')'; c.beginPath(); c.moveTo(g.cx + a1.x * R, g.cy + a1.y * R); c.lineTo(g.cx + b1.x * R, g.cy + b1.y * R); c.stroke(); }
+        }
+        B.forEach(function (p) {
+          var x = g.cx + p.x * R, y = g.cy + p.y * R, rr = p.r * R;
+          var gr = c.createRadialGradient(x - rr * .3, y - rr * .3, 0, x, y, rr);
+          gr.addColorStop(0, 'hsla(' + p.h.toFixed(0) + ',90%,85%,.95)'); gr.addColorStop(1, 'hsla(' + p.h.toFixed(0) + ',90%,55%,.15)');
+          c.fillStyle = gr; c.beginPath(); c.arc(x, y, rr, 0, 6.283); c.fill();
+        });
+        sparks = sparks.filter(function (s) { return t - s.t < 700; });
+        sparks.forEach(function (s) {
+          var k = (t - s.t) / 700, x = g.cx + s.x * R, y = g.cy + s.y * R;
+          c.strokeStyle = 'hsla(' + s.h.toFixed(0) + ',95%,80%,' + ((1 - k) * .8).toFixed(3) + ')'; c.lineWidth = 1;
+          c.beginPath(); c.arc(x, y, 2 + k * 16, 0, 6.283); c.stroke();
+        });
+        c.globalCompositeOperation = 'source-over';
+      };
+    })()
   ];
   var shardWrap = $('shards');
   var shards = PROJ.map(function (p, i) {
@@ -1173,17 +1220,17 @@ function zGlyph(cv, kind, t, color, energy) {
       el.style.zIndex = String(Math.round(z * 10) + 10);
     });
     setActive(Math.round(POS));
-    $('coTheta').textContent = 'θ ' + (POS * 72).toFixed(1).padStart(5, '0') + '°';
+    $('coTheta').textContent = 'θ ' + (POS * 360 / NP).toFixed(1).padStart(5, '0') + '°';
     var dl = POS - Math.round(POS);
     $('coDelta').textContent = 'Δ ' + (dl >= 0 ? '+' : '') + dl.toFixed(3);
     if (!narrow) {
-      var cx = W / 2, cy = vh * .48, sw = Math.min(Math.max(160, W * .2), 260);
+      var cx = W / 2, cy = vh * .5, sw = Math.min(Math.max(120, Math.min(W * .17, vh * .26)), 215);
       var a = coA.getBoundingClientRect(), b = coB.getBoundingClientRect(), c = coC.getBoundingClientRect();
       var fade = 1 - Math.min(1, Math.abs(dl) * 3);
       leaders.setAttribute('opacity', fade.toFixed(2));
       var p1 = [cx - sw * .3, cy - sw * .3], p2 = [cx + sw * .36, cy - sw * .16], p3 = [cx + sw * .3, cy + sw * .28];
       var curve = function (p, x2, y2) { var m = (p[0] + x2) / 2; return '<path d="M' + p[0] + ' ' + p[1] + ' C' + m + ' ' + p[1] + ' ' + m + ' ' + y2 + ' ' + x2 + ' ' + y2 + '"/><circle cx="' + p[0] + '" cy="' + p[1] + '" r="7" fill="rgba(183,155,255,.25)" stroke="none"/><circle cx="' + p[0] + '" cy="' + p[1] + '" r="2.4" fill="#F4F1E9" stroke="none"/>'; };
-      leaders.innerHTML = curve(p1, a.right + 8, a.bottom - 8) + curve(p2, b.left - 10, b.top + 8) + curve(p3, c.left - 10, c.top + 8);
+      leaders.innerHTML = curve(p1, a.right + 8, a.bottom - 8) + curve(p2, b.left - 10, b.top + 8) + (c.width ? curve(p3, c.left - 10, c.top + 8) : '');
       [coA, coB, coC].forEach(function (e) { e.style.opacity = (.25 + .75 * fade).toFixed(2); });
     }
   }
