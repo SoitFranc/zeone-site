@@ -146,7 +146,12 @@ main,footer{position:relative;z-index:1}
 .pager button{min-width:44px;min-height:44px;background:transparent;border:0;color:var(--mute);font-family:var(--display);font-size:30px;line-height:1;cursor:pointer;transition:color .3s;border-radius:50%}
 .pager button:hover{color:var(--ink)}
 .pager .now{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;min-width:200px;text-align:center}
-.visit{font-size:10.5px}
+.visit{font-size:12px;min-height:56px;padding:0 36px;pointer-events:auto}
+.shard.on{cursor:pointer}
+.shard.on::after{content:attr(data-go);position:absolute;left:50%;bottom:-14px;transform:translate(-50%,6px);white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .4s,transform .4s;pointer-events:none}
+.shard.on:hover::after{opacity:1;transform:translate(-50%,0)}
+.shard.on:hover .world{filter:brightness(1.25)}
+.shard .world{transition:filter .4s}
 @media (max-width:860px){.co.coA{left:0;right:0;top:auto;bottom:calc(300px + env(safe-area-inset-bottom,0px));text-align:center}.coB,.coC,.callouts svg{display:none}.shard,.ring3d{top:38%}.orbit .desc{font-size:15px}.orbit .head{top:calc(96px + env(safe-area-inset-top,0px))}}
 
 /* sections */
@@ -332,7 +337,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
     <div class="foot gut">
       <p class="desc" id="coDesc">Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.</p>
-      <a class="link visit" id="coLink" href="https://innernet.work" target="_blank" rel="noopener">Visiter innernet.work ↗</a>
+      <a class="btn visit" id="coLink" href="https://innernet.work" target="_blank" rel="noopener">Visiter innernet.work ↗</a>
       <div class="pager">
         <button type="button" id="prevP" aria-label="Projet précédent" data-i18n-aria="aPrev">‹</button>
         <span class="now" id="pagerNow">01 · Innernet</span>
@@ -1210,7 +1215,8 @@ function zGlyph(cv, kind, t, color, energy) {
     var el = document.createElement('div'); el.className = 'shard'; el.setAttribute('aria-hidden', 'true');
     el.innerHTML = '<div class="glow"></div><canvas class="world"></canvas>';
     el.querySelector('.glow').style.background = 'radial-gradient(circle,' + p.glow + '66 0%,' + p.glow + '22 30%,transparent 62%)';
-    el.addEventListener('click', function () { goTo(i); });
+    el.setAttribute('data-go', L('Ouvrir le site ↗', 'Open the site ↗'));
+    el.addEventListener('click', function () { if (i === current) window.open(p.url, '_blank', 'noopener'); else goTo(i); });
     shardWrap.appendChild(el); return el;
   });
   var worldCv = shards.map(function (el) { return el.querySelector('canvas'); });
@@ -1237,6 +1243,7 @@ function zGlyph(cv, kind, t, color, energy) {
   $('nextP').addEventListener('click', function () { goTo(current + 1); });
   function setActive(i) {
     if (i === current) return;
+    shards.forEach(function (sh, k) { sh.classList.toggle('on', k === i); });
     var first = current < 0; current = i; var p = PROJ[i], k = first ? 0 : 1;
     scramble($('coId'), L('PROJET_', 'PROJECT_') + p.id, 500 * k);
     scramble($('coName'), p.name, 650 * k);
