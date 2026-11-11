@@ -123,7 +123,7 @@ main,footer{position:relative;z-index:1}
 .sigBot .big{margin:0;font-family:var(--display);font-style:italic;font-weight:300;font-size:clamp(34px,4.2vw,60px);line-height:1.1}
 
 /* orbit of projects */
-.orbit{position:relative;height:500vh}
+.orbit{position:relative;height:640vh}
 .orbit .stage{background:radial-gradient(ellipse at 50% 50%,rgba(70,60,160,.24),transparent 62%)}
 .orbit .head{position:absolute;z-index:3;top:calc(110px + env(safe-area-inset-top,0px));left:0;right:0}
 .orbit .head .wrap{display:flex;flex-direction:column;gap:14px}
@@ -328,7 +328,7 @@ html.lenis,html.lenis body{height:auto}
       <svg aria-hidden="true"><g id="leaders" fill="none" stroke="rgba(200,190,255,.38)" stroke-width="1"></g></svg>
       <div class="co coA" id="coA"><span id="coId">PROJET_01</span><span class="nm" id="coName">Innernet</span></div>
       <div class="co coB" id="coB" aria-hidden="true"><span data-i18n="pStatus">Statut</span><b id="coStatus">En développement</b><span data-i18n="pType">Type</span><b id="coKind">Plateforme web</b></div>
-      <div class="co coC" id="coC" aria-hidden="true"><span data-i18n="pAlgo">Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 06</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
+      <div class="co coC" id="coC" aria-hidden="true"><span data-i18n="pAlgo">Algorithme</span><b id="coAlgo">Sphère de Fibonacci · 520 pts</b><span id="coOrb">Orbite 01 / 08</span><br><span id="coTheta">θ 000.0°</span><br><span id="coDelta">Δ +0.000</span></div>
     </div>
     <div class="foot gut">
       <p class="desc" id="coDesc">Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.</p>
@@ -1002,7 +1002,9 @@ function zGlyph(cv, kind, t, color, energy) {
     { id: '03', name: 'Kastleveo', kind: L('Plateforme web', 'Web platform'), status: L('En construction', 'Under construction'), url: 'https://kastleveo.com', dom: 'kastleveo.com', desc: L('Rassemblements curatés et location de châteaux d’exception, pour une clientèle haut de gamme.', 'Curated gatherings and exceptional château rentals for a high-end clientele.'), glow: '#FFB870', algo: L('Rosace · symétrie 12', 'Rose window · 12-fold') },
     { id: '04', name: 'Shai Mara', kind: L('Collectif artistique', 'Art collective'), status: L('Lancement', 'Launching'), url: 'https://shaimara.com', dom: 'shaimara.com', desc: L('Un collectif d’immersion artistique. Premier rendez-vous : quatre jours hors du temps dans un château.', 'An immersive art collective. First gathering: four timeless days in a French château.'), glow: '#FF4F8B', algo: L('Attracteur de Clifford', 'Clifford attractor') },
     { id: '05', name: 'Multivers Magazine', kind: L('Magazine en ligne', 'Online magazine'), status: L('En ligne', 'Live'), url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: L('Un magazine en ligne, déjà publié sur multiversmagazine.com.', 'An online magazine, already published at multiversmagazine.com.'), glow: '#9FB8FF', algo: L('Bulles-univers · 7 mondes', 'Bubble universes · 7 worlds') },
-    { id: '06', name: 'Collysio', kind: L('Jeu multijoueur 3D', '3D multiplayer game'), status: L('En ligne', 'Live'), url: 'http://collysio.com/', dom: 'collysio.com', desc: L('Un jeu multijoueur en 3D dans le navigateur : incarnez un gladiateur dans le hall d’un Colisée peuplé de héros mythologiques.', 'A 3D multiplayer game in the browser: play a gladiator in the hall of a Colosseum filled with mythological heroes.'), glow: '#FFB870', algo: L('Arène · collisions élastiques', 'Arena · elastic collisions') }
+    { id: '06', name: 'Collysio', kind: L('Jeu multijoueur 3D', '3D multiplayer game'), status: L('En ligne', 'Live'), url: 'http://collysio.com/', dom: 'collysio.com', desc: L('Un jeu multijoueur en 3D dans le navigateur : incarnez un gladiateur dans le hall d’un Colisée peuplé de héros mythologiques.', 'A 3D multiplayer game in the browser: play a gladiator in the hall of a Colosseum filled with mythological heroes.'), glow: '#FFB870', algo: L('Arène · collisions élastiques', 'Arena · elastic collisions') },
+    { id: '07', name: 'Algorhythm', kind: L('Instrument musical web', 'Web music instrument'), status: L('En ligne', 'Live'), url: 'http://algorhythm.space/', dom: 'algorhythm.space', desc: L('Un instrument génératif : des polygones tournent sur un cercle et chaque sommet joue une note. Composez des polyrythmes, enregistrez, exportez en MIDI.', 'A generative instrument: polygons spin on a circle and every vertex plays a note. Compose polyrhythms, record, export to MIDI.'), glow: '#9FD3FF', algo: L('Polyrythme 3 : 4 : 5 : 7', 'Polyrhythm 3 : 4 : 5 : 7') },
+    { id: '08', name: 'Second Person', kind: L('Projet web', 'Web project'), status: L('Bientôt', 'Coming soon'), url: 'https://secondperson.online', dom: 'secondperson.online', desc: L('Un nouveau projet de l’univers Zeone, bientôt sur secondperson.online.', 'A new project of the Zeone universe, soon at secondperson.online.'), glow: '#E58BFF', algo: L('Interférences · deux sources', 'Interference · two sources') }
   ];
   var NP = PROJ.length;
   function prep(cv) {
@@ -1166,7 +1168,42 @@ function zGlyph(cv, kind, t, color, energy) {
         });
         c.globalCompositeOperation = 'source-over';
       };
-    })()
+    })(),
+    function algorhythm(g, t, act) {
+      var c = g.c, R = g.R * .95, NS = [3, 4, 5, 7], cols = ['#8FB2FF', '#B79BFF', '#E58BFF', '#FFC99A'], per = 4200 / (1 + act * .6);
+      c.globalCompositeOperation = 'lighter';
+      c.strokeStyle = 'rgba(200,210,255,.18)'; c.lineWidth = 1; c.beginPath(); c.arc(g.cx, g.cy, R, 0, 6.283); c.stroke();
+      c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(g.cx - 1, g.cy - R - 9, 2, 12);
+      NS.forEach(function (n, k) {
+        var rr = R * (.38 + k * .19), ph = (t / per) * 6.283, col = cols[k];
+        c.strokeStyle = col; c.globalAlpha = .55; c.lineWidth = 1.2; c.beginPath();
+        for (var v = 0; v <= n; v++) { var a = ph + v / n * 6.283 - Math.PI / 2, x = g.cx + Math.cos(a) * rr, y = g.cy + Math.sin(a) * rr; if (v) c.lineTo(x, y); else c.moveTo(x, y); }
+        c.stroke(); c.globalAlpha = 1;
+        for (v = 0; v < n; v++) {
+          var a2 = ph + v / n * 6.283 - Math.PI / 2, d = Math.abs(Math.atan2(Math.sin(a2 + Math.PI / 2), Math.cos(a2 + Math.PI / 2)));
+          var hit = Math.max(0, 1 - d / .22), x2 = g.cx + Math.cos(a2) * rr, y2 = g.cy + Math.sin(a2) * rr;
+          c.fillStyle = col; c.beginPath(); c.arc(x2, y2, 2.4 + hit * 5, 0, 6.283); c.fill();
+          if (hit > 0) { c.strokeStyle = col; c.globalAlpha = hit * .7; c.beginPath(); c.arc(x2, y2, 6 + (1 - hit) * 18, 0, 6.283); c.stroke(); c.globalAlpha = 1; }
+        }
+      });
+      c.globalCompositeOperation = 'source-over';
+    },
+    function secondperson(g, t, act) {
+      var c = g.c, R = g.R, a = t * .0004 * (1 + act * .8), d = R * .28;
+      var s1 = [g.cx + Math.cos(a) * d, g.cy + Math.sin(a) * d], s2 = [g.cx - Math.cos(a) * d, g.cy - Math.sin(a) * d];
+      c.globalCompositeOperation = 'lighter'; c.lineWidth = 1;
+      [[s1, 'rgba(229,139,255,'], [s2, 'rgba(143,178,255,']].forEach(function (S) {
+        for (var k = 0; k < 9; k++) {
+          var r = ((t * .02 + k * R * .1) % (R * .88)), al = Math.pow(Math.max(0, 1 - r / (R * .88)), 1.5) * .55;
+          c.strokeStyle = S[1] + al.toFixed(3) + ')'; c.beginPath(); c.arc(S[0][0], S[0][1], r, 0, 6.283); c.stroke();
+        }
+        var cg = c.createRadialGradient(S[0][0], S[0][1], 0, S[0][0], S[0][1], R * .2);
+        cg.addColorStop(0, S[1] + '.9)'); cg.addColorStop(1, S[1] + '0)');
+        c.fillStyle = cg; c.beginPath(); c.arc(S[0][0], S[0][1], R * .2, 0, 6.283); c.fill();
+      });
+      c.strokeStyle = 'rgba(244,241,233,.25)'; c.beginPath(); c.moveTo(s1[0], s1[1]); c.lineTo(s2[0], s2[1]); c.stroke();
+      c.globalCompositeOperation = 'source-over';
+    }
   ];
   var shardWrap = $('shards');
   var shards = PROJ.map(function (p, i) {
