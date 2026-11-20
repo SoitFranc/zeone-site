@@ -147,6 +147,9 @@ main,footer{position:relative;z-index:1}
 .pager button:hover{color:var(--ink)}
 .pager .now{font-family:var(--mono);font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;min-width:200px;text-align:center}
 .visit{font-size:12px;min-height:56px;padding:0 36px;pointer-events:auto}
+.orbit .links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.visit.alt{background:none;box-shadow:inset 0 0 0 1px rgba(183,155,255,.4)}
+.visit[hidden]{display:none}
 .shard.on{cursor:pointer}
 .shard.on::after{content:attr(data-go);position:absolute;left:50%;bottom:-14px;transform:translate(-50%,6px);white-space:nowrap;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink);opacity:0;transition:opacity .4s,transform .4s;pointer-events:none}
 .shard.on:hover::after{opacity:1;transform:translate(-50%,0)}
@@ -337,7 +340,7 @@ html.lenis,html.lenis body{height:auto}
     </div>
     <div class="foot gut">
       <p class="desc" id="coDesc">Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.</p>
-      <a class="btn visit" id="coLink" href="https://innernet.work" target="_blank" rel="noopener">Visiter innernet.work ↗</a>
+      <div class="links"><a class="btn visit" id="coLink" href="https://innernet.work" target="_blank" rel="noopener">Visiter innernet.work ↗</a><a class="btn visit alt" id="coLink2" href="#" target="_blank" rel="noopener" hidden></a></div>
       <div class="pager">
         <button type="button" id="prevP" aria-label="Projet précédent" data-i18n-aria="aPrev">‹</button>
         <span class="now" id="pagerNow">01 · Innernet</span>
@@ -1003,7 +1006,7 @@ function zGlyph(cv, kind, t, color, energy) {
   /* ---------- projects orbit: one generative world per project ---------- */
   var PROJ = [
     { id: '01', name: 'Innernet', kind: L('Plateforme web', 'Web platform'), status: L('En développement', 'In development'), url: 'https://innernet.work', dom: 'innernet.work', desc: L('Une plateforme dédiée aux retraites, pour se retirer du bruit et se reconnecter à soi.', 'A platform for retreats, to step away from the noise and reconnect with yourself.'), glow: '#6F8BFF', algo: L('Sphère de Fibonacci · 520 pts', 'Fibonacci sphere · 520 pts') },
-    { id: '02', name: 'noiz', kind: L('Application mobile', 'Mobile app'), status: L('En développement', 'In development'), url: 'https://noiz.world', dom: 'noiz.world', desc: L('Une application mobile temps réel, co-fondée à quatre entre la France et Barcelone.', 'A real-time mobile app, co-founded by four between France and Barcelona.'), glow: '#D45BFF', algo: L('Onde radiale · 64 bandes', 'Radial wave · 64 bands') },
+    { id: '02', name: 'noiz', kind: L('Application mobile', 'Mobile app'), status: L('En développement', 'In development'), url: 'https://noiz.world', dom: 'noiz.world', extra: { url: 'https://www.noiz.world/talisman/index.html', label: L('Découvrir Talisman', 'Discover Talisman') }, desc: L('Une application mobile temps réel, co-fondée à quatre entre la France et Barcelone.', 'A real-time mobile app, co-founded by four between France and Barcelona.'), glow: '#D45BFF', algo: L('Onde radiale · 64 bandes', 'Radial wave · 64 bands') },
     { id: '03', name: 'Kastleveo', kind: L('Plateforme web', 'Web platform'), status: L('En construction', 'Under construction'), url: 'https://kastleveo.com', dom: 'kastleveo.com', desc: L('Rassemblements curatés et location de châteaux d’exception, pour une clientèle haut de gamme.', 'Curated gatherings and exceptional château rentals for a high-end clientele.'), glow: '#FFB870', algo: L('Rosace · symétrie 12', 'Rose window · 12-fold') },
     { id: '04', name: 'Shai Mara', kind: L('Collectif artistique', 'Art collective'), status: L('Lancement', 'Launching'), url: 'https://shaimara.com', dom: 'shaimara.com', desc: L('Un collectif d’immersion artistique. Premier rendez-vous : quatre jours hors du temps dans un château.', 'An immersive art collective. First gathering: four timeless days in a French château.'), glow: '#FF4F8B', algo: L('Attracteur de Clifford', 'Clifford attractor') },
     { id: '05', name: 'Multivers Magazine', kind: L('Magazine en ligne', 'Online magazine'), status: L('Bientôt de retour', 'Back soon'), url: 'https://multiversmagazine.com', dom: 'multiversmagazine.com', desc: L('Un magazine en ligne, bientôt de retour sur multiversmagazine.com.', 'An online magazine, back soon at multiversmagazine.com.'), glow: '#9FB8FF', algo: L('Bulles-univers · 7 mondes', 'Bubble universes · 7 worlds') },
@@ -1253,6 +1256,7 @@ function zGlyph(cv, kind, t, color, energy) {
     $('coOrb').textContent = L('Orbite ', 'Orbit ') + p.id + ' / 0' + NP;
     $('coDesc').textContent = p.desc;
     var link = $('coLink'); link.href = p.url; link.textContent = L('Visiter ', 'Visit ') + p.dom + ' ↗';
+    var l2 = $('coLink2'); if (p.extra) { l2.href = p.extra.url; l2.textContent = p.extra.label + ' ↗'; l2.hidden = false; } else { l2.hidden = true; }
     scramble($('pagerNow'), p.id + ' · ' + p.name, 450 * k);
   }
   var leaders = $('leaders'), coA = $('coA'), coB = $('coB'), coC = $('coC');
